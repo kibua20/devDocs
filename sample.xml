@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note>
+    <!-- XML comment, 한글 커멘트 -->
+    <to>Tove</to>
+    <from>Jani</from>
+    <heading>Reminder</heading>
+    <body>Don't forget me this weekend!</body>
+</note>
