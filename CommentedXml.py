@@ -25,4 +25,4 @@ if __name__ == "__main__":
     tree = ET.parse('sample.xml',parser=ET.XMLParser(target = CommentedTreeBuilder()))
     root = tree.getroot()
     dump (root)
-    tree.write('commented_parser.xml')
+    tree.write('commented_parser.xml',encoding='utf8',xml_declaration=True)
