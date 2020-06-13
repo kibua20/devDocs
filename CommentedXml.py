@@ -10,9 +10,8 @@ class CommentedTreeBuilder(ET.TreeBuilder):
             self.start(ET.Comment, {})
             self.data(data)
             self.end(ET.Comment)
-            
 
-if __name__ == "__main__":
+def read_write():
     print ('---------------------------------------------------------')
     print ('Before: ElementTree ogirinal parser()')
     tree = ET.parse('sample.xml')
@@ -26,3 +25,35 @@ if __name__ == "__main__":
     root = tree.getroot()
     dump (root)
     tree.write('commented_parser.xml',encoding='utf8',xml_declaration=True)
+
+
+    print ('---------------------------------------------------------')
+    print ('Commented root')
+    try:
+        tree = ET.parse('doubleroot.xml',parser=ET.XMLParser(target = CommentedTreeBuilder()))
+    except:
+        tree = ET.parse('doubleroot.xml')
+
+    root = tree.getroot()
+    dump (root)
+    tree.write('commented_parser.xml',encoding='utf8',xml_declaration=True)
+
+def read_element():
+    tree = ET.parse('sample2.xml')
+    root = tree.getroot()
+
+    print ('ogrigianl----')
+    dump(tree)
+    for rank in root.iter('rank'):
+        print (rank.get('updated'))
+        new_rank = int(rank.text) + 1
+        rank.text = str(new_rank)
+        rank.set('updated New', 'yes')
+
+    print ('after----')
+    dump(tree)
+
+
+if __name__ == "__main__":
+    #read_write()
+    read_element()

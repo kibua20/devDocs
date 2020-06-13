@@ -1,7 +1,6 @@
-<note>
-    <!-- XML comment, &#54620;&#44544; &#52964;&#47704;&#53944; -->
-    <to>Tove</to>
-    <from>Jani</from>
-    <heading>Reminder</heading>
-    <body>Don't forget me this weekend!</body>
-</note>
+<?xml version='1.0' encoding='utf8'?>
+<resources>
+    <test_tag name="Testing">
+        <item name="policy_system" type="string" />
+    </test_tag>
+</resources>
