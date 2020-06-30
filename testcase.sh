@@ -1,8 +1,7 @@
-echo "ls > sample.txt result:"
-echo "sample text from stdin" > sample.txt
-
 echo "ls | ./test_stdio.py result:"
 ls | ./test_stdio.py argument#1 argument#2
+
+echo "sample text from stdin" > sample.txt
 
 echo "cat sample.txt | ./test_stdio.py result:"
 cat sample.txt | ./test_stdio.py argument#1 argument#2
