@@ -100,4 +100,5 @@ def sendmail(to, subject, message_text_html, attachment=None):
 # -----------------------------------------------------------------------------------------
 if __name__ == "__main__":
     sendmail('receiver@gmail.com', 'subject_test', 'message_test', None)
+    #sendmail('receiver@gmail.com', 'subject_test', 'message_test', 'sampl.jpg')
   
