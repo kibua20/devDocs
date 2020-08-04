@@ -22,9 +22,11 @@ def apk_download(apklist):
     option.add_argument("disable-extensions")
     #option.add_argument("start-maximized")
     option.add_argument('disable-gpu')
+    # 백그라운드로 다운로드
     option.add_argument('headless')
     option.add_argument("user-data-dir=./profile")
 
+    # 안전하지 않은 콘텐츠 다운로드 팝업을 표시하지 않도록 옵션 설정
     option.add_experimental_option("prefs", {
         "download.default_directory": r"./download",
         "download.prompt_for_download": False,
