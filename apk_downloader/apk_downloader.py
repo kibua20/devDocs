@@ -41,8 +41,8 @@ def apk_download(apklist):
         browser.get(apk_mirror_url)
         time.sleep(10)
 
-    # chrome에서 다운로드 완료 할때 까지 충분한 시간을 기다림
-    time.sleep(30)
+    # chrome에서 다운로드 완료 할때까지 충분한 시간을 기다림
+    time.sleep(30*10)
 
     # chrome 종료
     browser.quit()
