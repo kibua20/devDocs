@@ -9,6 +9,7 @@ from selenium.webdriver.common.keys import Keys
 import os
 import time
 
+#파이썬 Selenium을 활용한 블서치 백링크 등록 자동화 - https://kibua20.tistory.com/103
 def blogsearch_kr_url_req():
     #---------------------------------------------------------------------------------------------------
     # 티스토리 ID     e.g.) https://kibua20.tistory.com/ 인 경우 kibua20 설정
