@@ -37,8 +37,7 @@ def blogsearch_kr_url_req():
     browser = webdriver.Chrome(options=option)
 
     # blogsearch_url 접속
-    browser.get(blogsearch_url)
-
+    browser.get(blogsearch_url)    
     for idx in range(from_url,to_url+1):
         url = blog_url + str(idx)
         print(url)
