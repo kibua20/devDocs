@@ -9,23 +9,11 @@ from selenium.webdriver.common.keys import Keys
 import os
 import time
 
-# import requests
-# def sitemap():
-#     sitemap_url = 'https://kibua20.tistory.com/sitemap'
-
-#     # Tistory에서 python requests 호출 시 403에러 발생
-#     request_headers = { 
-#         'User-Agent' : ('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36'), 
-#     } 
-#     res = requests.get(sitemap_url, headers=request_headers)
-#     res.raise_for_status()
-#     return res.text
-
-
 def naver_serach_advisor_url_req():
     #-----------------------------------------------------------------------
     # Naver Serach Advisor 의 ID 와 티스토리 마지막 포스팅 번호
-    your_id = 'kibua20'
+    #your_id = 'kibua20'
+    your_id = 'your_id'
     last_url = 60
     #------------------------------------------------------------------------
 
@@ -35,6 +23,7 @@ def naver_serach_advisor_url_req():
     option = Options()
     profile_dir = os.path.join(os.getcwd(), 'profile')
     option.add_argument("user-data-dir="+profile_dir)
+    option.set_capability('unhandledPromptBehavior', 'accept')
 
     # webdriver 얻어옴
     browser = webdriver.Chrome(options=option)
@@ -51,10 +40,11 @@ def naver_serach_advisor_url_req():
     for idx in range(0,49):
         # 마지막 포스팅 번호에서 50개까지 입력
         url = str(last_url - idx)
-        element = browser.find_element_by_id("input-139")
 
         # text bod id가 변경됨
-        if element == None:
+        try:
+            element = browser.find_element_by_id("input-139")
+        except:
             element = browser.find_element_by_id("input-202")
         
         # Text box 내용을 지움
