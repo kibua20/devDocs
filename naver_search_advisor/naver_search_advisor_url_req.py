@@ -26,7 +26,7 @@ def naver_serach_advisor_url_req():
     #-----------------------------------------------------------------------
     # Naver Serach Advisor 의 ID 와 티스토리 마지막 포스팅 번호
     your_id = 'kibua20'
-    last_url = 101
+    last_url = 60
     #------------------------------------------------------------------------
 
     blog_url = 'https://searchadvisor.naver.com/console/site/request/crawl?site=https%3A%2F%2F'+your_id+'.tistory.com'
@@ -47,11 +47,15 @@ def naver_serach_advisor_url_req():
     # chrome에서 다운로드 완료 할때 까지 충분한 시간을 기다림
     time.sleep(30)
 
+    print ('start')
     for idx in range(0,49):
         # 마지막 포스팅 번호에서 50개까지 입력
         url = str(last_url - idx)
-        browser.find_element_by_id("input-139").clear()
         element = browser.find_element_by_id("input-139")
+
+        # text bod id가 변경됨
+        if element == None:
+            element = browser.find_element_by_id("input-202")
         
         # Text box 내용을 지움
         element.send_keys(Keys.CONTROL + "a")
