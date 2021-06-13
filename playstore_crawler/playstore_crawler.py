@@ -118,12 +118,8 @@ def playstore_crawler(url, ouputfile='./playstore_reviews.csv'):
 
 def main():
     # Google Player Store url
-    url = "https://play.google.com/store/apps/details?id=com.lguplus.mobile.cs&showAllReviews=true"
-    playstore_crawler(url, 'com.lguplus.mobile.cs_reviews.csv')
-
-    url = 'https://play.google.com/store/apps/details?id=Com.sktelecom.minit&showAllReviews=true'
-    playstore_crawler(url, 'Com.sktelecom.minit_reviews.csv')
-
+    url = 'https://play.google.com/store/apps/details?id=com.google.android.youtube&showAllReviews=true'
+    playstore_crawler(url, 'com.google.android.youtube.csv')
 
 if __name__ == '__main__':
     main()
