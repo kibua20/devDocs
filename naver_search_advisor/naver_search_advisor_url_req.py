@@ -13,8 +13,11 @@ def naver_serach_advisor_url_req():
     #-----------------------------------------------------------------------
     # Naver Serach Advisor 의 ID 와 티스토리 마지막 포스팅 번호
     #your_id = 'kibua20'
-    your_id = 'your_id'
-    last_url = 60
+    #your_id = 'your_id'
+    last_url = 37
+
+    # 135 - 87 요청 완료 
+    # 86 - 38 요청 완료
     #------------------------------------------------------------------------
 
     blog_url = 'https://searchadvisor.naver.com/console/site/request/crawl?site=https%3A%2F%2F'+your_id+'.tistory.com'
@@ -39,11 +42,15 @@ def naver_serach_advisor_url_req():
     print ('start')
     for idx in range(0,49):
         # 마지막 포스팅 번호에서 50개까지 입력
+        if (last_url - idx <= 0 ):
+             continue
+
         url = str(last_url - idx)
+       
 
         # text bod id가 변경됨
         try:
-            element = browser.find_element_by_id("input-139")
+            element = browser.find_element_by_id("input-198")
         except:
             element = browser.find_element_by_id("input-202")
         
