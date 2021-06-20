@@ -4,10 +4,8 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
-import requests
 from time import sleep
 import pandas as pd
-
 
 
 def playstore_crawler(url, ouputfile='./playstore_reviews.csv'):
@@ -25,7 +23,7 @@ def playstore_crawler(url, ouputfile='./playstore_reviews.csv'):
 
     # scroll browser 
     SCROLL_PAUSE_TIME = 1
-    SCROLL_MAX_NUM = 10
+    SCROLL_MAX_NUM = 0
     last_height = browser.execute_script("return document.body.scrollHeight")
     loop = 0
     while loop < SCROLL_MAX_NUM :
@@ -47,16 +45,26 @@ def playstore_crawler(url, ouputfile='./playstore_reviews.csv'):
 
         loop = loop + 1
 
-    # browser.quit()
-    # exit(1)
-
     html = browser.page_source
 
     # html find
     soup = BeautifulSoup(html,"html.parser")
 
-    # get user, stars, date 
+    # get user div.bAhLNe.kx8XBd 
     users = soup.select('div.bAhLNe.kx8XBd > span')
+    # print (len(users))
+    # for u in users:
+    #     print (u,  u.text)
+
+
+    # # copy element
+    # users = soup.select('span.X43Kjb')
+    # print (len(users))
+    # for u in users:
+    #     print (u,  u.text)
+    # browser.quit()
+    # return
+
 
     # stars
     stars_string = soup.select('span.nt2C1d > .pf5lIe > div')
