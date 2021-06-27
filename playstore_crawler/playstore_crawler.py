@@ -18,7 +18,14 @@ def playstore_crawler(url, ouputfile='./playstore_reviews.csv'):
 
 
     # webdriver 얻어옴  - google-chrome --version으로  version을 확인하고 맞는 chrome drvier를 다운로드: https://chromedriver.chromium.org/downloads
-    browser = webdriver.Chrome('./chromedriver', options=option)
+    # webdriver
+    try:
+        browser = webdriver.Chrome('./chromedriver', options=option)
+        print ('Load Chrome driver for Linux')
+    except:
+        browser = webdriver.Chrome('./chromedriver_mac', options=option)
+        print ('Load Chrome driver for MacOS')
+    
     browser.get(url)
 
     # scroll browser 
