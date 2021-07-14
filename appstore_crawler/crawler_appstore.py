@@ -75,8 +75,8 @@ def appstore_crawler(appid, outfile='./appstore_reviews.csv'):
                 })
 
     res_df = pd.DataFrame(result)
-    res_df['DATE'] = pd.to_datetime(res_df['DATE'], format="%Y-%m-%dT%H:%M:%S-07:00")
-    res_df.to_csv(outfile, encoding='utf-8-sig')
+    res_df['DATE'] = pd.to_datetime(res_df['DATE'], format="%Y-%m-%dT%H:%M:%S")
+    res_df.to_csv(outfile, encoding='utf-8-sig', index=False)
     print ('Save reviews to file: %s \n' %(outfile))
 
 
