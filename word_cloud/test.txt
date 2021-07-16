@@ -1,0 +1,291 @@
+Python JSON 사용 방법에 대해서 정리하고자 합니다. JSON은 Key-value를 양식을 가지는 텍스트 파일로 인터넷 상의 서버-클라이언트의 데이터 교환에 많이 사용되고 있습니다.  최근에서는 Web 서버와 client간의 통신 및 프로그램과 프로그램 사이의 데이터 표현 및 교환하는데 사용되는 사실 상의 표준입니다. Python에서는 json 모듈을 지원하고 있으면 인코딩/디코딩을 지원하고 있고, JSON 데이터와 Python 데이터는 1:1로 맵핑되어 사용하기 쉽니다.  Python JSON 공식 문서는 여기를 참고해주세요.  
+
+ 
+
+1. JSON 이란 
+JSON 에 설명 및 예제를 참고해주세요. 
+
+(출처: 위키백과)
+
+JSON(JavaScript Object Notation)은 속성-값 쌍(attribute–value pairs and array data types (or any other serializable value)) 또는 "키-값 쌍"으로 이루어진 데이터 오브젝트를 전달하기 위해 인간이 읽을 수 있는 텍스트를 사용하는 개방형 표준 포맷입니다. 비동기 브라우저/서버 통신 (AJAX)을 위해, 넓게는 XML(AJAX가 사용)을 대체하는 주요 데이터 포맷이다.
+
+특히, 인터넷에서 자료를 주고받을 때 그 자료를 표현하는 방법으로 알려져 있다. 자료의 종류에 큰 제한은 없으며, 특히 컴퓨터 프로그램의 변수 값을 표현하는 데 적합하다. 본래는 자바스크립트 언어로부터 파생되어 자바스크립트의 구문 형식을 따르지만 언어 독립형 데이터 포맷이다. 즉, 프로그래밍 언어나 플랫폼에 독립적이므로, 구문 분석 및 JSON 데이터 생성을 위한 코드는 C, C++, C#, 자바, 자바스크립트, 펄, 파이썬 등 수많은 프로그래밍 언어에서 쉽게 이용할 수 있다.
+ 
+
+JSON 파일 예제
+JSON 파일의 예제는 아래와 같습니다. 
+
+{
+
+   "이름": "홍길동",                          → 스트링
+
+   "나이": 25,                                      → 숫자 (정수)
+
+   "특기": ["농구", "도술"],              → list 표현 가능
+
+    "가족관계": {"아버지": "홍판서", "어머니": "춘섬"},  → array 표현 가능
+
+   "결혼 여부": true                          → Boolean 
+
+}
+
+ 
+
+※ JSON 파일에서 Comment 처리
+ JSON 파일은 의도적으로 Comment를 지원하지 않습니다. Visual Code와 같은 일부 IDE에서는 JSON 파일에 comment를 처리하기는 하지만,  다른 프로그램과의 호환성을 고려할 때는 Comment는 사용지 않는 것이 바람직합니다. 
+
+ 
+
+2. Python에서 JSON 처리 함수
+JSON 데이터 type과 Python 데이터 타입
+JSON의 데이터 Type과 파이썬에서 데이터 type은 1:1로 매칭 됩니다.   Python에서는 JSON은 주로 dict로 처리하고 있습니다. 
+
+JSON 타입	Python
+Object 	dict
+배열(array)	list
+문자열(string)	str
+숫자 (정수)	int
+숫자 (실수)	float
+true	True
+false	False
+null	None
+ 
+
+JSON에서 인코딩 방식은 UTF-8, UTF-16, UTF-32를 사용할 수 있으며,  최대 호환성을 보장하기 위해서 사용하는 인코딩 방식은 UTF-8입니다. 즉 특별한 사유가 있지 않으면 UTF-8로 처리하고 사용하면 됩니다. 또한 인코딩 Byte 순서 (BOM)를 추가하는 것은 금지되어 있습니다.
+
+ 
+
+JSON 파일 읽기
+파이썬에서 JSON 처리는 json 모듈을 사용할 수 있고, json.load() 함수를 사용해서 json 파일을 읽어 dict 형태로 저장합니다. json.loads() 함수는 파일 대신 object (string, byte arrray)에서 파이썬 객체로 역직렬화 합니다. 
+
+ 
+
+import json    → json 모듈 import
+
+with open('sample.json', 'r') as f:        → 파일 읽기 f  
+
+    sample = json.load(f)   →  json.load() 함수에서 sample 읽어옴
+
+ 
+
+sample['이름'] = '홍길동'
+
+sample['나이'] = 25
+
+sample['특기'] = ['농구', '도술']
+
+sample['가족관계'] = {"아버지": "홍판서", "어머니": "춘섬"}
+
+sample['결혼 여부] = True
+
+ 
+
+json.load(fp, *, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)
+
+   -  fp(JSON 문서를 포함하는 read()를 지원하는 텍스트 파일이나 바이너리 파일)를 파이썬 객체로 역 직렬화 합니다.
+
+   - parse_float가 지정되면, 디코딩될 모든 JSON float의 문자열로 호출됩니다.  이것은 float(num_str)와 동일합니다.
+
+   - parse_int가 지정되면, 디코딩될 모든 JSON int의 문자열로 호출됩니다. 기본적으로 이것은 int(num_str)와 동일합니다.
+
+ 
+JSON 파일 쓰기
+파이썬 객체를 JSON 파일로 저장하는 함수는 json.dump()입니다.  json.dumps() 함수는 file 대신 string으로 직렬화 합니다. 
+
+ 
+
+with open('sample_out.json', 'w') as w:
+
+    json.dump(sample, w, indent='\t')    →  파이썬 객체 sample을 file w에 저장함
+
+ 
+
+json.dump(obj, fp, *, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, default=None, sort_keys=False, **kw)
+
+ -  obj를 JSON 형식 스트림으로 fp(.write()fp.write()를 지원하는 파일류 객체)로 직렬화 합니다.
+
+ - indent가 음이 아닌 정수나 문자열이면, JSON 배열 요소와 오브젝트 멤버가 해당 들여 쓰기 수준으로 예쁘게 인쇄됩니다. 0, 음수 또는 ""의 들여쓰기 수준은 줄 넘김만 삽입합니다. None(기본값)은 가장 간결한(compact) 표현을 선택합니다. 양의 정수 indent를 사용하면, 수준 당 그만큼의 스페이스로 들여 쓰기 합니다.indent가 문자열이면 (가령 "\t"), 각 수준을 들려 쓰는 데 그 문자열을 사용합니다.
+
+ - sort_keys가 참이면 (기본값: False), 딕셔너리의 출력이 키로 정렬됩니다.
+
+ 
+
+ 
+
+Dictionary 를 JSON 으로 변환 (json.dump()) 시 한글 깨짐 현상 수정법
+JSON 파일을 처리하다보면 Python Dictionary를 JSON으로 변환하여 출력하는 경우가 매우 많습니다.  Dictionary에 한글이 포함되어 있고, json.dumps() 함수를 이용해서 JSON으로 출력하는 경우 한글이 깨질 수 있습니다.  이 경우 'ensure_ascii=False' 추가해서 수정이 가능합니다.  아래 예제를 확인해보세요. 
+
+ 
+
+import json
+dict1 = {
+   '이름': '홍길동',
+   '나이': 25, 
+   "특기": ["농구", "도술"],
+   "가족관계": {"아버지": "홍판서", "어머니": "춘섬"},
+   "결혼 여부": True
+}
+
+print (type(dict1))
+print (dict1)
+
+[출력 결과]   print(dict1) 하더라도 한글이 유지됩니다.
+<class 'dict'>
+{'이름': '홍길동', '나이': 25, '특기': ['농구', '도술'], '가족관계': {'아버지': '홍판서', '어머니': '춘섬'}, '결혼 여부': True}
+ 
+
+json_object  = json.dumps(dict1, indent=4)
+print (type(json_object))
+print (json_object)
+
+[출력 결과] json.dump() 변환 시 한글이 모두 깨집니다.
+<class 'str'>
+{
+    "\uc774\ub984": "\ud64d\uae38\ub3d9",
+    "\ub098\uc774": 25,
+    "\ud2b9\uae30": [
+        "\ub18d\uad6c",
+        "\ub3c4\uc220"
+    ],
+    "\uac00\uc871\uad00\uacc4": {
+        "\uc544\ubc84\uc9c0": "\ud64d\ud310\uc11c",
+        "\uc5b4\uba38\ub2c8": "\ucd98\uc12c"
+    },
+    "\uacb0\ud63c \uc5ec\ubd80": true
+}
+ 
+
+json_object  = json.dumps(dict1, indent=4, ensure_ascii=False)
+print (type(json_object))
+print (json_object)
+
+[출력 결과] json.dump() 변환 시 ensure_ascii = False 옵션을 추가하는 경우 한글이 정상적으로 유지됩다. 
+<class 'str'>
+{
+    "이름": "홍길동",
+    "나이": 25,
+    "특기": [
+        "농구",
+        "도술"
+    ],
+    "가족관계": {
+        "아버지": "홍판서",
+        "어머니": "춘섬"
+    },
+    "결혼 여부": true
+}
+ 
+
+Python JSON에서 ensure_ascii=True값이 기본 값이며, 이는 JSON encoder에서 저장하는 문자열은 ascii 코드 값을 유지하도록하지만, utf8 로 인코딩된 한글은 ascii 값이외의 값을 가지고 있기 때문에 한글이 깨지는 것입니다.  ensure_ascii=False 값으로 설정하여 문자열의 값을 그대로 유지하여 한글이 깨지지 않도록 하는 것입니다. 
+
+
+ 출처: https://docs.python.org/ko/3/library/json.html
+ 
+
+JSON value에 JSON 객체를 할당 (Dictionary 값을 다시 Dictionary로 할당) 
+JSON 파일은 Python 의 Dictionary 데이터 타입으로 맵핑되고,  Key-Value 형태의 값을 가지고 있습니다. JSON의 장점 중 하나는 Value값에 JSON과 List형태를 할당할 수 있습니다.   예를 들어 아래와 같은 JSON은 Key 값인 "가족관계" 의 Value는 "아버지" Key를 가지는 있는 JSON으로 할당할 수 있습니다.
+
+ 
+
+{
+    "가족관계": {
+        "아버지": {
+              "직업": "홍판서",
+               "나이": 40
+         }
+    },
+    "결혼 여부": true
+}
+ 
+
+Python code를 옮기면 아래와 같습니다.  Dictionary를 선언하고 Key 값을 할당하고 Value에서 새로운 dictionary를 할당하면  [ ] 연산자를 사용할 수 있습니다. 
+
+ 
+
+json_dic=dict()
+
+json_dic['가족관게'] = dict()
+
+json_dic['가족관계']['아버지']=dict()
+
+json_dic['가족관계']['아버지']['직업']= "홍판서"
+
+json_dic['가족관계']['아버지']['나이']= 40
+
+json_dic['결혼 여부'] = True
+
+ 
+
+ 
+
+JSON value에 List를 객체를 할당 (Dictionary 값을 List로 할당) 
+JSON 파일은 Python 의 Dictionary 데이터 타입으로 맵핑되는데 Key-value 값에서  Value를 List 객체로 할당하는 경우입니다.
+
+{    
+     "이름": "홍길동",    
+     "특기": [        
+                "농구",        
+                "도술"    
+     ]
+}
+Python code로 옮기면 아래와 같습니다. 
+
+ 
+
+list_value = list()
+
+list_value.append('농구')
+
+list_value.append('배구')
+
+ 
+
+json_obj = dict()
+
+json_obj['특기'] = list_values
+
+ 
+
+제어 문자 (\r, \n, \t, \o)가 포함된 문자열의 JSON 처리
+Json 문자열에 개행 문자(\n)같은 문자가 포함되어 있는 경우 json.loads() 함수에서 strict=False 로 설정해야 JsonDecoder Error를 방지할 수 있습니다.  자세한 내용은 아래 별도의 포스팅을 확인 부탁드립니다 
+
+ 
+
+[SW 개발/Python] - Python으로 개행 문자(\n)가 포함된 JSON 읽기: JSONDecodeError 수정하기
+
+ 
+
+ 
+
+ 
+
+관련 글
+[모바일 SW 개발/Python] - Python Error: #!/usr/bin/env python3: 그런 파일이나 디렉터리가 없습니다 (No such file or directory)
+
+[개발환경/Web Server] - Python: Web Framework Flask 사용하기
+
+[블로그 관리] - 파이썬 Selenium을 활용한 네이버 서치어드바이저 URL 입력 '자동화'
+
+[모바일 SW 개발/Python] - 파이썬으로 Apk Download 자동화: Selenium기반의 Apk 크롤러
+
+[모바일 SW 개발/Python] - Python: OSError: [Errno 98] Address already in use (Flask)
+
+[모바일 SW 개발/Python] - Python code 숨기는 방법: PyInstaller로 실행 파일 만들기
+
+[모바일 SW 개발/Python] - Python 여러 버전 설치 방법 (3.x and 3.y 동시 설치)
+
+[모바일 SW 개발/Python] - Python 폴더 및 파일 처리 함수 모음
+
+[모바일 SW 개발/Python] - Python: 폴더 백업 기능 구현 (7zip 압축, Sample code)
+
+[모바일 SW 개발/Python] - Python 표준 입출력(stdin/stdout) 활용 - 리눅스 프로그램과 연동
+
+[모바일 SW 개발/Python] - Python smtplib 사용한 email 발송 예제 (gmail)
+
+[모바일 SW 개발/Python] - Python SyntaxError: Non-ASCII character in file on, but no encoding declared
+
+[모바일 SW 개발/Python] - Python 2.7과 3.8호환성: a bytes-like object is required, not 'str'에러 수정
+
+
+
+출처: https://kibua20.tistory.com/114 [모바일 SW 개발자가 운영하는 블로그]
