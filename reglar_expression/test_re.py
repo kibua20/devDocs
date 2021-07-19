@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-
 import re
 
+# Regular expression sample code for https://kibua20.tistory.com/199
 string = 'The Regular Expresion !!! 123 @#! 한글'
 
 # 소문자만, +는 1번 이상 반복
