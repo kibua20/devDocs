@@ -1,0 +1,17 @@
+Grade,Name, Test1,Test2,Test3,Test4,Final, Grade
+Freshman,Alfalfa,40,90,100,83,49,D
+Freshman,Alfred,41,97,96,97,48,D
+Freshman,Gerty,41,80,60,40,44,C
+Freshman,Android,42,23,36,45,47,B
+Somophore,Bumpkin,43,78,88,77,45,A
+Somophore,Rubble,44,90,80,90,46,C
+Somophore,Noshow,45,11,-1,4,43,F
+Somophore,Buff,46,20,30,40,50,B
+Junior,Airpump,49,1,90,100,83,A
+Junior,Backus,48,1,97,96,97,A
+Junior,Carnivore,44,1,80,60,40,D
+Junior,Dandy,47,1,23,36,45,C
+Senior,Elephant,45,1,78,88,77,B
+Senior,Franklin,50,1,90,80,90,B
+Senior,George,40,1,11,-1,4,B
+Senior,Heffalump,30,1,20,30,40,C

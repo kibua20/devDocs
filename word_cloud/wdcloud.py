@@ -33,7 +33,8 @@ def wordcloud_from_text(input_file, output_file='wordcloud.png'):
                         width=512, height=512,
                         max_font_size=500,
                         max_words=1000)
-    wc.generate_from_frequencies(dict(noun_list)) 
+    wc.generate_from_frequencies(dict(noun_list))
+    # Save to png
     wc.to_file(output_file)
     print ('Create WordCloud:', output_file)
 
