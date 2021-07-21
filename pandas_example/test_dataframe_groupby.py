@@ -3,12 +3,8 @@
 
 import pandas as pd
 
-print ('read_excel()\n')
-df = pd.read_excel('./Grade_Sample.xlsx')
+# csv file에서 읽기
+df = pd.read_csv('./Grade_sample.csv')
 print (df)
-
-
-df = pd.read_csv('./Grade_Sample.csv')
-print ('read_csv()')
-print(df)
-
+df_groupby = df.groupby(['Grade']).mean()
+print (df_groupby)
