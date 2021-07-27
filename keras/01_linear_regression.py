@@ -3,15 +3,14 @@
 
 import numpy as np
 
-import tensorflow as tf
-from tensorflow import keras
-
-from keras.models import Sequential
-from keras.layers import Dense
-from keras import optimizers
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from tensorflow.keras import optimizers
+# from keras.models import Sequential
+# from keras.layers import Dense
+# from keras import optimizers
 
 import matplotlib.pyplot as plt
-
 
 # data set
 x_data = np.array([1,2,3,4,5,6,])
@@ -25,17 +24,17 @@ model.add(Dense(1, input_dim = 1, activation='linear'))
 sgd = optimizers.SGD(learning_rate = 0.01)
 model.compile(loss='mse',optimizer=sgd, metrics=['accuracy'])
 
-history = model.fit(x_data, y_data, epochs=10, shuffle=False, verbose=1)
+# model fit
+history = model.fit(x_data, y_data, epochs=20, shuffle=False, verbose=1)
 
 # prediction
 print (model.predict([7]))
 
-
-# model summary
+# print model summary
 model.summary()
 
 # 학습 정확성 값과 검증 정확성 값을 플롯팅 합니다. 
-print(history.history)
+#print(history.history)
 plt.plot(history.history['accuracy'])
 plt.plot(history.history['loss'])
 plt.title('Model accuracy')
