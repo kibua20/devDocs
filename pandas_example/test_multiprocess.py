@@ -49,10 +49,6 @@ def run_multicore(df):
     # df['outCol'] = df[['inCol1', 'inCol2', 'inCol3']].swifter.apply(my_func,positional_arg, keyword_arg=keyword_argval)
 
 if __name__ == '__main__':
-    # df = df_rand(100)
-    # print (df)
-    # exit(0)
-
     df = df_rand(10000000+1)
 
     print ('\nn=100')

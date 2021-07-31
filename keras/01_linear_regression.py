@@ -25,7 +25,11 @@ sgd = optimizers.SGD(learning_rate = 0.01)
 model.compile(loss='mse',optimizer=sgd, metrics=['accuracy'])
 
 # model fit
-history = model.fit(x_data, y_data, epochs=20, shuffle=False, verbose=1)
+history = model.fit(x_data, y_data, epochs=20, batch_size=1, shuffle=False, verbose=1)
+
+loss_and_metric = model.evaluate(x_data, y_data, batch_size=1)
+print ('evaluate:')
+print (loss_and_metric)
 
 # prediction
 print (model.predict([7]))
@@ -42,5 +46,5 @@ plt.ylabel('Accuracy')
 plt.xlabel('Epoch')
 plt.legend(['Accuracy', 'Loss'], loc='upper left')
 plt.savefig('tran_result.png')
-plt.show()
+#plt.show()
 
