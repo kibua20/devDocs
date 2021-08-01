@@ -23,7 +23,7 @@ x_data = np.array([
                   ])
 y_data = np.array([72,88,92,81,100,71])
 
-# model: linear regression input dense with dim =1
+# model: linear regression input dense with dim=1
 model = Sequential()
 
 # 다중 회귀에서는 input dim 값과, output_dim 값을 변경해야 함.
@@ -34,7 +34,7 @@ sgd = optimizers.SGD(learning_rate = 0.00001)
 model.compile(loss='mse', optimizer=sgd, metrics=['mse'])
 
 # model fit
-history = model.fit(x_data, y_data, batch_size=1, epochs=100, shuffle=False, verbose=1)
+history = model.fit(x_data, y_data, batch_size=1, epochs=400, shuffle=False, verbose=1)
 
 # prediction
 x_test = np.array([[90,88,93], [70,70,70]])
