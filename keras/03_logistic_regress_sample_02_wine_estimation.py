@@ -15,6 +15,9 @@ df = pd.read_csv('./wine.csv')
 x_data = df.values[:, 0:12]
 y_data = df.values[:, 12]
 
+print ('Wine quality samples:')
+print (df)
+
 # model: linear regression input dense with dim =1
 model = Sequential()
 model.add(Dense(1, input_dim = 12, activation='sigmoid'))
@@ -24,7 +27,7 @@ sgd = optimizers.SGD(learning_rate = 0.01)
 model.compile(loss='binary_crossentropy', optimizer=sgd)
 
 # model fit
-history = model.fit(x_data, y_data, epochs=50, batch_size=5, shuffle=False)
+history = model.fit(x_data, y_data, epochs=100, batch_size=5, shuffle=False)
 
 loss_and_metric = model.evaluate(x_data, y_data)
 print ('Evaluate:\n', loss_and_metric)
@@ -45,7 +48,7 @@ plt.plot(history.history['loss'])
 plt.ylabel('Loss (binary_crossentropy)')
 plt.xlabel('Epochs')
 plt.savefig('03_train_logistic_reg_wine.png')
-plt.show()
+#plt.show()
 plt.clf()
 
 # plt.plot (x_data, model.predict(x_data), 'b', x_data, y_data, 'k.')
