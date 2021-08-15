@@ -32,6 +32,7 @@ def test_onehot_encode():
     print ('decoding():')
     print (encoder.inverse_transform([3,2,1,0]))
 
+
 def soft_max():
     df = pd.read_csv('iris.csv')
     print (df)
@@ -46,6 +47,8 @@ def soft_max():
     encoder.fit(Y)
     Y_encoded = to_categorical(encoder.transform(Y))
     # print (Y_encoded)
+
+    # pd.get_dummies()
 
     # model: linear regression input dense with dim = 3
     nn = True
