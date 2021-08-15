@@ -4,18 +4,24 @@
 import numpy as np
 import pandas as pd
 
-# from sklearn.preprocessing import LabelEncoder
 import matplotlib.pyplot as plt
 
+# import sci-kit learn
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_samples, silhouette_score
 
+# 입력 data 정의
 df = np.array([[1,4],[2,2],[2,5],[3,3],[3,4],[4,7],[5,6],[6,4],[6,7],[7,6],[7,9],[8,7],[8,9],[9,4],[9,8]])
 print ('Input data:')
 print (df)
 
+# cluster 개수 정의
 n_clusters = 3
+
+# K-mean 알고리즘 적용
 kmeans = KMeans(n_clusters=n_clusters, init='k-means++', max_iter=300, n_init=10)
+
+# k-mean cluster결과 
 y_pred = kmeans.fit_predict(df)
 
 
