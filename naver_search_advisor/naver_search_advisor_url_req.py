@@ -16,12 +16,11 @@ def naver_serach_advisor_url_req():
     your_id = 'your_id'
     last_url = 214
 
-    # 135 - 87 요청 완료 
-    # 86 - 38 요청 완료
+    # 214 - 164 요청 완료 
+    # 
     #------------------------------------------------------------------------
 
     blog_url = 'https://searchadvisor.naver.com/console/site/request/crawl?site=https%3A%2F%2F'+your_id+'.tistory.com'
-
 
     option = Options()
     profile_dir = os.path.join(os.getcwd(), 'profile')
@@ -37,7 +36,7 @@ def naver_serach_advisor_url_req():
     print ('Login first')
 
     # chrome에서 다운로드 완료 할때 까지 충분한 시간을 기다림
-    time.sleep(1)
+    time.sleep(30)
 
     print ('start')
     for idx in range(0,49):
@@ -47,7 +46,6 @@ def naver_serach_advisor_url_req():
 
         url = str(last_url - idx)
        
-
         # text bod id가 변경됨
         try:
             element = browser.find_element_by_id("input-198")
@@ -72,7 +70,6 @@ def naver_serach_advisor_url_req():
         time.sleep(0.1)
         print ('URL 요청: ', url)
 
-      
     browser.quit()
     print ('URL 입력 완료 및 브라우져 종료')
 
