@@ -12,9 +12,9 @@ import time
 def naver_serach_advisor_url_req():
     #-----------------------------------------------------------------------
     # Naver Serach Advisor 의 ID 와 티스토리 마지막 포스팅 번호
-    #your_id = 'kibua20'
+    your_id = 'kibua20'
     #your_id = 'your_id'
-    last_url = 37
+    last_url = 214
 
     # 135 - 87 요청 완료 
     # 86 - 38 요청 완료
@@ -29,7 +29,7 @@ def naver_serach_advisor_url_req():
     option.set_capability('unhandledPromptBehavior', 'accept')
 
     # webdriver 얻어옴
-    browser = webdriver.Chrome(options=option)
+    browser = webdriver.Chrome('./chromedriver', options=option)
 
     # Naver 접속
     browser.get(blog_url)
@@ -37,7 +37,7 @@ def naver_serach_advisor_url_req():
     print ('Login first')
 
     # chrome에서 다운로드 완료 할때 까지 충분한 시간을 기다림
-    time.sleep(30)
+    time.sleep(1)
 
     print ('start')
     for idx in range(0,49):
@@ -56,18 +56,23 @@ def naver_serach_advisor_url_req():
         
         # Text box 내용을 지움
         element.send_keys(Keys.CONTROL + "a")
-        element.send_keys(Keys.DELETE)
+        element.send_keys(Keys.BACK_SPACE)
 
+        # Mac OS에서  Text box 내용을 지움
+        element.send_keys(Keys.COMMAND + "a")
+        element.send_keys(Keys.BACK_SPACE)
+        
         # 티스토리 포스팅의 URL을 입력 
         element.send_keys(url)
         element.send_keys(Keys.TAB)
-        time.sleep(0.1)
+        time.sleep(3)
     
         # 등록 요청
         element.send_keys(Keys.ENTER)
         time.sleep(0.1)
         print ('URL 요청: ', url)
 
+      
     browser.quit()
     print ('URL 입력 완료 및 브라우져 종료')
 
