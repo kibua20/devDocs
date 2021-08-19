@@ -12,8 +12,8 @@ import time
 def naver_serach_advisor_url_req():
     #-----------------------------------------------------------------------
     # Naver Serach Advisor 의 ID 와 티스토리 마지막 포스팅 번호
-    your_id = 'kibua20'
-    #your_id = 'your_id'
+    #your_id = 'kibua20'
+    your_id = 'your_id'
     last_url = 214
 
     # 135 - 87 요청 완료 
