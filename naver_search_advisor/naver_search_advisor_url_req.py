@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
@@ -16,7 +15,7 @@ def naver_serach_advisor_url_req():
     your_id = 'your_id'
     last_url = 214
 
-    # 214 - 164 요청 완료 
+    # 214 - 166 요청 완료 
     # 
     #------------------------------------------------------------------------
 
