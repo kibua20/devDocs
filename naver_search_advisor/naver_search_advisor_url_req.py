@@ -7,16 +7,17 @@ from selenium.webdriver.common.keys import Keys
 
 import os
 import time
+import argparse
 
-def naver_serach_advisor_url_req():
+def naver_serach_advisor_url_req(your_id= None, last_url=None):
     #-----------------------------------------------------------------------
     # Naver Serach Advisor 의 ID 와 티스토리 마지막 포스팅 번호
     #your_id = 'kibua20'
-    your_id = 'your_id'
-    last_url = 214
+    #your_id = 'your_id'
+    #last_url = 117
 
     # 214 - 166 요청 완료 
-    # 
+    # 165 - 117 완
     #------------------------------------------------------------------------
 
     blog_url = 'https://searchadvisor.naver.com/console/site/request/crawl?site=https%3A%2F%2F'+your_id+'.tistory.com'
@@ -35,7 +36,7 @@ def naver_serach_advisor_url_req():
     print ('Login first')
 
     # chrome에서 다운로드 완료 할때 까지 충분한 시간을 기다림
-    time.sleep(30)
+    time.sleep(3)
 
     print ('start')
     for idx in range(0,49):
@@ -74,4 +75,8 @@ def naver_serach_advisor_url_req():
 
 
 if __name__ == "__main__":
-    naver_serach_advisor_url_req()
+    parser = argparse.ArgumentParser(description=__name__)
+    parser.add_argument("-id", required=True, help='your id')
+    parser.add_argument("-url", required=True, help='last url')
+    args = parser.parse_args()
+    naver_serach_advisor_url_req(args.id, args.url)
