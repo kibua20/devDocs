@@ -18,6 +18,7 @@ def naver_serach_advisor_url_req(your_id= None, last_url=None):
 
     # 214 - 166 요청 완료 
     # 165 - 117 완
+    # 117 - 68 완
     #------------------------------------------------------------------------
 
     blog_url = 'https://searchadvisor.naver.com/console/site/request/crawl?site=https%3A%2F%2F'+your_id+'.tistory.com'
@@ -79,4 +80,4 @@ if __name__ == "__main__":
     parser.add_argument("-id", required=True, help='your id')
     parser.add_argument("-url", required=True, help='last url')
     args = parser.parse_args()
-    naver_serach_advisor_url_req(args.id, args.url)
+    naver_serach_advisor_url_req(args.id, int (args.url))
