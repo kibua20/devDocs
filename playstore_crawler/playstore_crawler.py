@@ -30,7 +30,7 @@ def playstore_crawler(url, ouputfile='./playstore_reviews.csv'):
 
     # scroll browser 
     SCROLL_PAUSE_TIME = 1
-    SCROLL_MAX_NUM = 0
+    SCROLL_MAX_NUM = 120
     last_height = browser.execute_script("return document.body.scrollHeight")
     loop = 0
     while loop < SCROLL_MAX_NUM :

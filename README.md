@@ -1,15 +1,1 @@
-#원격에 있는 git 을 로컬로 copy 한다. 
-git clone https://github.com/kibua20/devDocs
-
-#수정할 파일을 만든다
-vim hellow.py
-
-#git commit을 만든다.
-git add .
-git commit -m "Initial commit"
-
-#git 현재 상태를 확인한다. .
-git status
-
-#원격 저장소에 수정한 내용을 push한다.
-git push origin master
+## https://kibua20.tistory.com/ 블로그에서 설명한 소스 코드입니다. 실제 동작하는 코드로 상세 내용은 블로그를 방문해주세요. 댓글로 질문을 남겨주시면 제가 아는 범위에서는 답변을 달아드립니다.
