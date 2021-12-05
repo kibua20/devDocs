@@ -24,8 +24,8 @@ dash_app5 = Dash(__name__, server=application, url_base_pathname='/dashapp5/')
 # flask app
 @application.route('/')
 def index():
-    print('flask app index()')
-    return 'index'
+    #print('flask app index()')
+    return 'OK'
 
 
 # --------------------------------------------------------------------------------------------------------

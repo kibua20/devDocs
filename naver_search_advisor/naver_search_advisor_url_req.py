@@ -19,6 +19,7 @@ def naver_serach_advisor_url_req(your_id= None, last_url=None):
     # 214 - 166 요청 완료 
     # 165 - 117 완
     # 117 - 68 완
+    # 67-19 완
     #------------------------------------------------------------------------
 
     blog_url = 'https://searchadvisor.naver.com/console/site/request/crawl?site=https%3A%2F%2F'+your_id+'.tistory.com'
