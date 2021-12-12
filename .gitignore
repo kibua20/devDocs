@@ -139,3 +139,5 @@ codefactory.code-workspace
 .DS_Store
 
 profile/
+.DS_Store
+report/
