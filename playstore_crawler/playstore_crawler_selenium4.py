@@ -3,32 +3,32 @@
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
+
 from bs4 import BeautifulSoup
 from time import sleep
 import pandas as pd
-
-
-
-
 
 def playstore_crawler(url, ouputfile='./playstore_reviews.csv'):
     option = Options()
     option.add_argument("disable-infobars")
     option.add_argument("disable-extensions")
-    #option.add_argument("start-maximized")
+    # option.add_argument("start-maximized")
     option.add_argument('disable-gpu')
-    option.add_argument('headless')
+    # option.add_argument('headl
 
-    # webdriver 얻어옴  - google-chrome --version으로  version을 확인하고 맞는 chrome drvier를 다운로드: https://chromedriver.chromium.org/downloads
+    # Selenium 4.0
     try:
-        browser = webdriver.Chrome('./chromedriver', options=option)
-        print ('Load Chrome driver for Linux')
-    except:
-        browser = webdriver.Chrome('./chromedriver_mac', options=option)
-        print ('Load Chrome driver for MacOS')
-    
-    browser.get(url)
+        s = Service(ChromeDriverManager().install())
+        browser = webdriver.Chrome(service=s, options=option)
+    except Exception as e:
+        print(e)
+        return
 
+    browser.get(url)
+  
     # scroll browser 
     SCROLL_PAUSE_TIME = 1
     SCROLL_MAX_NUM = 120
