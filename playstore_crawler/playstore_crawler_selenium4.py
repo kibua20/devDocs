@@ -17,7 +17,7 @@ def playstore_crawler(url, ouputfile='./playstore_reviews.csv'):
     option.add_argument("disable-extensions")
     # option.add_argument("start-maximized")
     option.add_argument('disable-gpu')
-    # option.add_argument('headl
+    # option.add_argument('headless')
 
     # Selenium 4.0
     try:
