@@ -50,7 +50,28 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
-            SampleChildWidget(notifyParent: _incrementCounter)
+            SampleChildWidget(notifyParent: _incrementCounter),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: const <Widget>[
+                Icon(
+                  Icons.favorite,
+                  color: Colors.pink,
+                  size: 24.0,
+                  semanticLabel: 'Text to announce in accessibility modes',
+                ),
+                Icon(
+                  Icons.audiotrack,
+                  color: Colors.green,
+                  size: 30.0,
+                ),
+                Icon(
+                  Icons.beach_access,
+                  color: Colors.blue,
+                  size: 36.0,
+                ),
+              ],
+            )
           ],
         ),
       ),
@@ -80,3 +101,5 @@ class _SampleChildWidgetState extends State<SampleChildWidget> {
     );
   }
 }
+
+
