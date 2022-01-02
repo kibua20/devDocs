@@ -47,6 +47,21 @@ class _FormScreenState extends State<FormScreen> {
                       suffixIcon: Icon(Icons.star),
                       hintText: 'Hint Text',
                       labelText: 'Label Text',
+                      prefixText: 'PrefixText',
+                      suffixText: 'suffixtext',
+                    ),
+                  ),
+                  Padding(padding:  const EdgeInsets.fromLTRB(0, 0, 0, 20),),
+
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      icon: Icon(Icons.person),
+                      prefixIcon: Icon(Icons.phone),
+                      suffixIcon: Icon(Icons.star),
+                      hintText: 'Hint Text',
+                      labelText: 'Label Text',
+                      prefixText: 'PrefixText',
+                      suffixText: 'Suffixtext',
                     ),
                   ),
 
