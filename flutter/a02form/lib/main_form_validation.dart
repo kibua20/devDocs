@@ -56,15 +56,12 @@ class _FormScreenState extends State<FormScreen> {
                       ),
                     ),
                     TextFormField(
-                      // inputFormatters: [FilteringTextInputFormatter(RegExp('[0-9]'), allow:false), ],
                       autovalidateMode: AutovalidateMode.always,
-
                       decoration: const InputDecoration(
                         icon: Icon(Icons.person),
                         hintText: 'Hint Text',
                         labelText: 'Label Text',
                       ),
-
                       onSaved: (value) {
                         setState(() {
                           _id = value as String;
@@ -108,6 +105,7 @@ class _FormScreenState extends State<FormScreen> {
                           }
                           return null;
                         }
+                        // inputFormatters: [FilteringTextInputFormatter(RegExp('[0-9]'), allow:false), ],
                         // focusNode: _passwordFocusNode,
                         // keyboardType: TextInputType.text ,
                         // obscureText: true,
@@ -117,9 +115,6 @@ class _FormScreenState extends State<FormScreen> {
                         // ),
                         // textInputAction: TextInputAction.done,
                         ),
-
-                    // SizedBox( height: 16, ),
-
                     ElevatedButton(
                       onPressed: () {
                         // Validate returns true if the form is valid, or false otherwise.
