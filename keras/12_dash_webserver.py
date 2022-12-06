@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from dash_html_components.Br import Br
+from dash.html.Br import Br
 import flask
 
 import dash
